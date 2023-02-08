@@ -1,0 +1,19 @@
+name: testes-unitarios
+on:
+  pull_request:
+    types: [ opened, synchronize ]
+    branches:
+      - main
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Instala as dependencias
+        run: npm i
+      - name: Roda os testes
+        run: npm test

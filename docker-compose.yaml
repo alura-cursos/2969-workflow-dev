@@ -1,0 +1,37 @@
+version: '3.4'
+
+services:
+  dev:
+    build: .
+    container_name: livraria_api_dev
+    command: npm run dev
+    working_dir: /app
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/app:cached
+    depends_on:
+      - db
+  test:
+    build: .
+    container_name: livraria_api_test
+    command: npm run test
+    working_dir: /app
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./:/app:cached  
+  db:
+    image: postgres
+    container_name: livraria_db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin123
+      - POSTGRES_DB=livraria_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - database:/var/lib/postgresql/data
+  
+volumes:
+   database:
