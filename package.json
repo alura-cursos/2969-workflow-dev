@@ -9,7 +9,7 @@
     "unmigrate": "npx knex --knexfile=./src/db/knexfile.js migrate:rollback",
     "seed": "npx knex --knexfile=./src/db/knexfile.js seed:run",
     "dev": "npm install && npm run migrate && npm run seed && nodemon server.js",
-    "lint": "eslint --fix --ignore-path .gitignore .",
+    "lint": "eslint --ignore-path .gitignore .",
     "prepare-test-db": "sqlite3 ./src/test/livraria.sqlite < populate.sql",
     "drop-test-db": "rm -f ./src/test/livraria.sqlite",
     "test:mocha": "mocha ./src/test/routes/*.test.js",
