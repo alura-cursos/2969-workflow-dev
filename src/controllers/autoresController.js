@@ -30,8 +30,8 @@ class AutoresController {
       if (Object.keys(body).length === 0) {
         throw new Error('corpo da requisição vazio');
       }
-      const resposta = await autor.salvar(autor);
-      return res.status(201).json({ message: 'autor criado', content: resposta });
+      await autor.salvar(autor);
+      return res.status(201).json({ message: 'autor criado' });
     } catch (err) {
       if (err.message === 'corpo da requisição vazio') {
         return res.status(400).json({ message: err.message });

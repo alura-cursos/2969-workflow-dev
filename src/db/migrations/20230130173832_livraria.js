@@ -8,12 +8,16 @@ export function up(knex) {
       table.increments('id');
       table.string('nome', 255).notNullable();
       table.string('nacionalidade', 255).notNullable();
+      table.timestamp('created_at').defaultTo(knex.fn.now());
+      table.timestamp('updated_at').defaultTo(knex.fn.now());
     })
     .createTable('editoras', (table) => {
       table.increments('id');
       table.string('nome', 255).notNullable();
       table.string('cidade', 255).notNullable();
       table.string('email', 255).notNullable();
+      table.timestamp('created_at').defaultTo(knex.fn.now());
+      table.timestamp('updated_at').defaultTo(knex.fn.now());
     })
     .createTable('livros', (table) => {
       table.increments('id');
@@ -21,6 +25,8 @@ export function up(knex) {
       table.integer('paginas').notNullable();
       table.integer('editora_id').notNullable();
       table.integer('autor_id').notNullable();
+      table.timestamp('created_at').defaultTo(knex.fn.now());
+      table.timestamp('updated_at').defaultTo(knex.fn.now());
     });
 }
 

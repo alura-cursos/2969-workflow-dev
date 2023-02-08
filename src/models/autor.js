@@ -10,7 +10,7 @@ class Autor {
     created_at,
     updated_at,
   }) {
-    this.id = null || id;
+    this.id = id || null;
     this.nome = nome;
     this.nacionalidade = nacionalidade;
     this.created_at = created_at || new Date().toISOString();
@@ -27,10 +27,13 @@ class Autor {
   }
 
   async criar() {
-    return db('autores').insert(this)
-      .then((registroCriado) => db('autores')
-        .where('id', registroCriado[0]))
-      .then((registroSelecionado) => new Autor(registroSelecionado[0]));
+    const novoAutor = {
+      nome: this.nome,
+      nacionalidade: this.nacionalidade,
+      created_at: this.created_at,
+      updated_at: this.updated_at,
+    };
+    return db('autores').insert(novoAutor);
   }
 
   async atualizar(id) {
