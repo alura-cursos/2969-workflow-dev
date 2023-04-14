@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable camelcase */
-import db from '../db/dbconfig.js';
+import db from "../db/dbconfig.js";
 
 class Livro {
   constructor({
@@ -22,35 +22,33 @@ class Livro {
   }
 
   static async pegarLivros() {
-    return db.select('*').from('livros');
+    return db.select("*").from("livros");
   }
 
   static async pegarPeloId(id) {
-    const resultado = await db.select('*').from('livros').where({ id });
+    const resultado = await db.select("*").from("livros").where({ id });
     return resultado[0];
   }
 
   async criar() {
-    return db('livros').insert(this)
-      .then((registroCriado) => db('livros')
-        .where('id', registroCriado[0]))
+    return db("livros")
+      .insert(this)
+      .then((registroCriado) => db("livros").where("id", registroCriado[0]))
       .then((registroSelecionado) => new Livro(registroSelecionado[0]));
   }
 
   async atualizar(id) {
     // o update retorna a quantidade de rows atualizados e não o objeto do registro atualizado
-    await db('livros')
+    await db("livros")
       .where({ id })
       .update({ ...this, updated_at: new Date().toISOString() });
 
-    return db.select('*').from('livros').where({ id });
+    return db.select("*").from("livros").where({ id });
   }
 
   static async excluir(id) {
     // o del retorna a quantidade de rows deletados
-    return db('livros')
-      .where({ id })
-      .del();
+    return db("livros").where({ id }).del();
   }
 
   async salvar() {
