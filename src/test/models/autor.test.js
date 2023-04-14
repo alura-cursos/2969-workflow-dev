@@ -1,23 +1,20 @@
-import {
-  describe, expect, it, jest,
-} from '@jest/globals';
-import Autor from '../../models/autor.js';
+// eslint-disable-next-line object-curly-newline
+import { describe, expect, it, jest } from "@jest/globals";
+import Autor from "../../models/autor.js";
 
-describe('Testando o modelo Autor', () => {
+describe("Testando o modelo Autor", () => {
   const objetoAutor = {
-    nome: 'Lygia Fagundes Telles',
-    nacionalidade: 'brasileira',
+    nome: "Lygia Fagundes Telles",
+    nacionalidade: "brasileira",
   };
 
-  it('Deve instanciar um novo autor', () => {
+  it("Deve instanciar um novo autor", () => {
     const autor = new Autor(objetoAutor);
 
-    expect(autor).toEqual(
-      expect.objectContaining(objetoAutor),
-    );
+    expect(autor).toEqual(expect.objectContaining(objetoAutor));
   });
 
-  it.skip('Deve salvar autor no BD', async () => {
+  it.skip("Deve salvar autor no BD", async () => {
     const autor = new Autor(objetoAutor);
 
     const dados = await autor.salvar();
@@ -30,20 +27,21 @@ describe('Testando o modelo Autor', () => {
         ...objetoAutor,
         created_at: expect.any(String),
         updated_at: expect.any(String),
-      }),
+        // eslint-disable-next-line comma-dangle
+      })
     );
   });
 
-  it('Deve fazer uma chamada simulada ao BD', () => {
+  it("Deve fazer uma chamada simulada ao BD", () => {
     const autor = new Autor(objetoAutor);
 
     autor.salvar = jest.fn().mockReturnValue({
       id: 10,
-      nome: 'Lygia Fagundes Telles',
-      nacionalidade: 'brasileira',
+      nome: "Lygia Fagundes Telles",
+      nacionalidade: "brasileira",
       genero: null,
-      created_at: '2022-10-01',
-      updated_at: '2022-10-01',
+      created_at: "2022-10-01",
+      updated_at: "2022-10-01",
     });
 
     const retorno = autor.salvar();
@@ -54,7 +52,8 @@ describe('Testando o modelo Autor', () => {
         ...objetoAutor,
         created_at: expect.any(String),
         updated_at: expect.any(String),
-      }),
+        // eslint-disable-next-line comma-dangle
+      })
     );
   });
 });
