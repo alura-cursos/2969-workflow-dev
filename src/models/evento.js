@@ -2,15 +2,8 @@
 // import db from '../db/dbconfig.js';
 
 class Evento {
-  constructor({
-    id,
-    nome,
-    descricao,
-    data,
-    autor_id,
-    created_at,
-    updated_at,
-  }) {
+  // eslint-disable-next-line object-curly-newline
+  constructor({ id, nome, descricao, data, autor_id, created_at, updated_at }) {
     this.id = null || id;
     this.nome = nome;
     this.descricao = descricao;
@@ -21,15 +14,17 @@ class Evento {
   }
 
   static async pegarEventos() {
-    return [{
-      id: 1,
-      nome: 'lançamento',
-      descricao: 'descrição',
-      data: '2023-01-01',
-      autor_id: 1,
-      created_at: '2023-01-01 07:00:00',
-      updated_at: '2023-01-01 07:00:00',
-    }];
+    return [
+      {
+        id: 1,
+        nome: "lançamento",
+        descricao: "descrição",
+        data: "2023-01-01",
+        autor_id: 1,
+        created_at: "2023-01-01 07:00:00",
+        updated_at: "2023-01-01 07:00:00",
+      },
+    ];
   }
 }
 
