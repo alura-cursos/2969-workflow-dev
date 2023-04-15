@@ -1,5 +1,6 @@
-// eslint-disable-next-line object-curly-newline
-import { describe, expect, it, jest } from "@jest/globals";
+import {
+  describe, expect, it, jest,
+} from "@jest/globals";
 import Editora from "../../models/editora.js";
 
 describe("Testando o modelo Editora", () => {
@@ -28,8 +29,7 @@ describe("Testando o modelo Editora", () => {
         ...objetoEditora,
         created_at: expect.any(String),
         updated_at: expect.any(String),
-        // eslint-disable-next-line comma-dangle
-      })
+      }),
     );
   });
 
@@ -53,8 +53,7 @@ describe("Testando o modelo Editora", () => {
         ...objetoEditora,
         created_at: expect.any(String),
         updated_at: expect.any(String),
-        // eslint-disable-next-line comma-dangle
-      })
+      }),
     );
   });
 });
