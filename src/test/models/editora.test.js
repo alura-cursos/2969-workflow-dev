@@ -1,16 +1,16 @@
 import {
   describe, expect, it, jest,
-} from '@jest/globals';
-import Editora from '../../models/editora.js';
+} from "@jest/globals";
+import Editora from "../../models/editora.js";
 
-describe('Testando o modelo Editora', () => {
+describe("Testando o modelo Editora", () => {
   const objetoEditora = {
-    nome: 'CDC',
-    cidade: 'Sao Paulo',
-    email: 'c@c.com',
+    nome: "CDC",
+    cidade: "Sao Paulo",
+    email: "c@c.com",
   };
 
-  it('Deve instanciar uma nova editora', () => {
+  it("Deve instanciar uma nova editora", () => {
     const editora = new Editora(objetoEditora);
 
     expect(editora).toEqual(
@@ -18,7 +18,7 @@ describe('Testando o modelo Editora', () => {
     );
   });
 
-  it.skip('Deve salvar editora no BD', async () => {
+  it.skip("Deve salvar editora no BD", async () => {
     const editora = new Editora(objetoEditora);
 
     const dados = await editora.salvar();
@@ -35,16 +35,16 @@ describe('Testando o modelo Editora', () => {
     );
   });
 
-  it('Deve fazer uma chamada simulada ao BD', () => {
+  it("Deve fazer uma chamada simulada ao BD", () => {
     const editora = new Editora(objetoEditora);
 
     editora.salvar = jest.fn().mockReturnValue({
       id: 10,
-      nome: 'CDC',
-      cidade: 'Sao Paulo',
-      email: 'c@c.com',
-      created_at: '2022-10-01',
-      updated_at: '2022-10-01',
+      nome: "CDC",
+      cidade: "Sao Paulo",
+      email: "c@c.com",
+      created_at: "2022-10-01",
+      updated_at: "2022-10-01",
     });
 
     const retorno = editora.salvar();
