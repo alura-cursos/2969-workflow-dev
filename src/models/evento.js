@@ -1,9 +1,8 @@
 /* eslint-disable camelcase */
-// import db from '../db/dbconfig.js';
-
 class Evento {
-  // eslint-disable-next-line object-curly-newline
-  constructor({ id, nome, descricao, data, autor_id, created_at, updated_at }) {
+  constructor({
+    id, nome, descricao, data, autor_id, created_at, updated_at,
+  }) {
     this.id = null || id;
     this.nome = nome;
     this.descricao = descricao;
