@@ -1,15 +1,10 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable camelcase */
-import db from '../db/dbconfig.js';
+import db from "../db/dbconfig.js";
 
 class Autor {
-  constructor({
-    id,
-    nome,
-    nacionalidade,
-    created_at,
-    updated_at,
-  }) {
+  // eslint-disable-next-line object-curly-newline
+  constructor({ id, nome, nacionalidade, created_at, updated_at }) {
     this.id = null || id;
     this.nome = nome;
     this.nacionalidade = nacionalidade;
@@ -18,35 +13,33 @@ class Autor {
   }
 
   static async pegarAutores() {
-    return db.select('*').from('autores');
+    return db.select("*").from("autores");
   }
 
   static async pegarPeloId(id) {
-    const resultado = await db.select('*').from('autores').where({ id });
+    const resultado = await db.select("*").from("autores").where({ id });
     return resultado[0];
   }
 
   async criar() {
-    return db('autores').insert(this)
-      .then((registroCriado) => db('autores')
-        .where('id', registroCriado[0]))
+    return db("autores")
+      .insert(this)
+      .then((registroCriado) => db("autores").where("id", registroCriado[0]))
       .then((registroSelecionado) => new Autor(registroSelecionado[0]));
   }
 
   async atualizar(id) {
     // o update retorna a quantidade de rows atualizados e não o objeto do registro atualizado
-    await db('autores')
+    await db("autores")
       .where({ id })
       .update({ ...this, updated_at: new Date().toISOString() });
 
-    return db.select('*').from('autores').where({ id });
+    return db.select("*").from("autores").where({ id });
   }
 
   static async excluir(id) {
     // o del retorna a quantidade de rows deletados
-    return db('autores')
-      .where({ id })
-      .del();
+    return db("autores").where({ id }).del();
   }
 
   async salvar() {
@@ -62,8 +55,7 @@ class Autor {
   }
 
   static async pegaLivrosPorAutor(autorId) {
-    return db('livros')
-      .where({ autor_id: autorId });
+    return db("livros").where({ autor_id: autorId });
   }
 }
 
