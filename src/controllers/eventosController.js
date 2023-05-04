@@ -1,7 +1,8 @@
 import Evento from '../models/evento.js';
 
 class EventosController {
-  static liberaAcessoEventos = () => process.env.EVENTO_FLAG === 'true';
+  // eslint-disable-next-line no-undef
+  static liberaAcessoEventos = () => unleash.isEnable('eventos');
 
   static listarEventos = async (req, res) => {
     if (this.liberaAcessoEventos()) {

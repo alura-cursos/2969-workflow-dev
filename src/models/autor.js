@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable camelcase */
 import db from '../db/dbconfig.js';
@@ -65,6 +66,8 @@ class Autor {
     return db('livros')
       .where({ autor_id: autorId });
   }
+
+  // eslint-disable-next-line no-unused-vars
   static async pegaLivrosPorId(nacionalidade) {
     return db('livros')
       .where({ autor_id: autorId });
